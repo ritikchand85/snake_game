@@ -5,7 +5,11 @@ const gameOverSound = new Audio('gameover.mp3');
 const moveSound = new Audio('music/move.mp3');
 const musicSound = new Audio('music.mp3');
 
-let speed = 3; // Default speed
+let speed ; // Default speed
+
+let a=prompt("ENTER THE SPEED");
+a=Number.parseInt(a);
+speed=a;
 
 // Prompt the user for speed input
 
@@ -21,6 +25,7 @@ food = {x: 6, y: 7};
 function main(ctime) {
     window.requestAnimationFrame(main);
     // console.log(ctime)
+ 
     if((ctime - lastPaintTime)/1000 < 1/speed){
         return;
     }
@@ -37,16 +42,16 @@ function isCollide(snake) {
     }
     // If you bump into the wall
    if(snake[0].x>=18){
-    snake[0].x=1;
+    return true;
    }
    if(snake[0].y>=18){
-    snake[0].y=1;
+    return true;
    }
    if(snake[0].x<=0){
-    snake[0].x=18;
+    return true;
    }
    if(snake[0].y<=0){
-    snake[0].y=18;
+    return true;
    }
         
     return false;
